@@ -11,7 +11,7 @@ This project provides a web application and CLI tool for analyzing threats in te
 - **Recommendations**: Generate actionable recommendations based on the threat score and detected patterns.
 - **Web Interface**: Simple web interface for threat analysis and visualization.
 - **CLI Support**: Command-line support for fine-tuning and threat analysis.
-
+- **About threats.csv file**: You can customize this file yourself.
 ---
 
 ## Installation and Run
@@ -22,7 +22,7 @@ This project provides a web application and CLI tool for analyzing threats in te
    python3 -m venv .venv
    source .venv/bin/activate
    pip3 install -r requirements.txt
-   python3 safetext.py -h
+   python3 safetext.py --fine_tuning --datasets threats.csv
 ```
 ## The data format you want to know can be found by running this command
    ```bash
