@@ -22,6 +22,7 @@ This project provides a web application and CLI tool for analyzing threats in te
    python3 -m venv .venv
    source .venv/bin/activate
    pip3 install -r requirements.txt
+   pip install transformers[torch]
    python3 safetext.py --fine_tuning --datasets threats.csv
 ```
 ## The data format you want to know can be found by running this command
