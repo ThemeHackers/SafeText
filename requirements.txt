@@ -1,0 +1,10 @@
+transformers
+flask
+torch
+art
+datasets
+scikit-learn
+pandas
+
+
+
