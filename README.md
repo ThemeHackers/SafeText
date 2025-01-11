@@ -36,7 +36,8 @@ SafeText/
 ├── templates/             # HTML templates for the web app
 │   ├── home.html
 │   ├── about.html
-│   └── statistics.html
+│   ├── statistics.html
+|   └── start-model.html
 ├── requirements.txt       # Python dependencies
 ├── threats.csv            # Sample dataset for fine-tuning
 ├── README.md              # Documentation
