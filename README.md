@@ -42,11 +42,10 @@ This project provides a web application and CLI tool for analyzing threats in te
    ```bash
 SafeText/
 │
-├── app.py                 # Main application file
+├── safetext.py            # Main file
 ├── templates/             # HTML templates for the web app
 │   ├── home.html
 │   ├── about.html
-│   ├── statistics.html
 |   └── start-model.html
 ├── requirements.txt       # Python dependencies
 ├── threats.csv            # Sample dataset for fine-tuning
