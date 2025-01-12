@@ -5,6 +5,7 @@ art
 datasets
 scikit-learn
 pandas
-
+tqdm
+colorama
 
 
