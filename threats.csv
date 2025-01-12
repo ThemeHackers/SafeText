@@ -1,27 +1,51 @@
 text,label
-Your account has been compromised. Click here to fix it.,1
-Action required: Your account needs to be verified. Click here.,1
-Security alert! Your login credentials may have been exposed.,1
-Your recent login is suspicious. Please confirm your identity.,1
-Click here to reset your password and secure your account.,1
-Important: Please verify your account details to avoid issues.,1
-We noticed an unusual login attempt on your account. Confirm now.,1
-Your account has been temporarily locked. Verify your identity to unlock it.,1
-Click here to update your security settings and avoid issues.,1
-Security warning! Immediate action required to prevent account breach.,1
-Your recent request to change password is pending. Confirm now.,1
-Account breach detected! Your immediate action is required.,1
-Your device may be at risk. Click here to download the latest update.,1
-Alert! Unusual activity detected. Click here to resolve it.,1
-Click here to reset your account settings for security.,1
-verify,0
-verified,1
-Download this software to improve your system now!,1
-Click this link to download a file that will make your computer run faster!,1
-Please allow the application to access your data to protect against threats!,1
-Please enter your account and password to verify your identity in our system!,1
-Your account is being locked! Click here to verify your details within 24 hours!,1
-We detected suspicious activity in your account. Please click this link to reset your details!,1
-We have something important to discuss. Please click this link to see details! ,1
-Your sister had an accident. We need you to transfer money urgently! Click here to send money immediately!,1
-Please proceed with this request immediately to not miss the opportunity!,1
+Please verify your identity immediately.,1
+Click here to update your account.,1
+Alert: Suspicious login detected.,1
+Reset your password to avoid issues.,1
+Confirm your personal details for security.,1
+Your account access may be restricted.,1
+Click to upgrade your security settings.,1
+Your account may be at risk of being hacked.,1
+Please review recent changes to your account.,1
+System alert: Login from an unknown location detected.,1
+Confirm your password change request.,1
+Update your account information to avoid being locked.,1
+We encountered issues accessing your account. Please confirm.,1
+Unauthorized login attempt detected. Please verify.,1
+Check your account details to ensure security.,1
+Alert: Change your password immediately.,1
+A problem was detected on your device.,1
+Click here to view the latest system alert.,1
+Suspicious activity detected in your account. Confirm now.,1
+To secure your account please reset it.,1
+Update your profile now to prevent potential problems.,1
+Our system detected a risk in your account.,1
+Your account usage may be limited.,1
+You have a new notification in the system.,1
+Please respond to confirm this transaction.,1
+Unexpected activity detected in your account.,1
+Re-login to verify your credentials.,1
+Click here to resolve a security issue.,1
+Verify your phone number to activate your account.,1
+Update your payment information to continue using our service.,1
+Your account has been suspended. Click here to reactivate it.,1
+Security update required! Click here to download the latest patch.,1
+You’ve won a $1000 gift card Click here to claim your prize.,0
+Urgent: Verify your billing information to avoid service interruption.,1
+We detected unusual activity. Log in here to secure your account.,1
+Your password is about to expire. Click here to reset it now.,1
+Someone has accessed your account. Confirm it was you by clicking here.,1
+You have received a secure document. Click here to view.,1
+Your package delivery failed. Provide your details to reschedule.,0
+Your payment method has been declined. Update your card here.,1
+Your account was logged in from another country. Verify immediately.,1
+Congratulations! You are eligible for a free iPhone. Claim it now.,0
+We noticed unauthorized charges on your account. Click here to report.,1
+Download this app to protect your system from recent threats.,0
+Verify your account within 24 hours to avoid permanent suspension.,1
+Your email storage is full. Click here to upgrade.,0
+Your tax refund is ready. Click here to claim it now.,0
+Your social media account has been locked. Unlock it here.,0
+Click here to accept your pending payment.,0
+Critical security alert! Click here to scan your device.,1
