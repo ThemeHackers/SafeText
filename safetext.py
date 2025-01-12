@@ -5,12 +5,14 @@ from datasets import Dataset
 import pandas as pd
 import torch
 import re
-import art
 import numpy as np
+from colorama import Style , Fore , init 
+from tqdm import tqdm 
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from torch.optim import AdamW
 from torch.utils.data import DataLoader
 
+init(autoreset=True)
 app = Flask(__name__)
 
 def fine_tune_model(dataset_path="/home/kali/SafeText/threats.csv"):
@@ -39,7 +41,7 @@ def fine_tune_model(dataset_path="/home/kali/SafeText/threats.csv"):
 
     training_args = TrainingArguments(
         output_dir="./results",
-        evaluation_strategy="epoch",
+        eval_strategy="epoch",
         save_strategy="epoch",
         learning_rate=2e-5,
         per_device_train_batch_size=16,
@@ -65,23 +67,18 @@ def fine_tune_model(dataset_path="/home/kali/SafeText/threats.csv"):
 
     trainer = Trainer(
         model=model,
-        tokenizer=tokenizer,
         args=training_args,
         train_dataset=tokenized_train_datasets,
         eval_dataset=tokenized_test_datasets,
         compute_metrics=compute_metrics,
     )
 
-
-    trainer.train()
-
+    for epoch in tqdm(range(training_args.num_train_epochs), desc="Training Epochs"):
+        trainer.train()
 
     results = trainer.evaluate(tokenized_test_datasets)
-
     
-    print(f"Test Accuracy: {results['eval_accuracy']}")
-
-
+    print(f"Test Accuracy: {results['eval_accuracy']:.5f}")
     model.save_pretrained("./fine_tuning_model")
     tokenizer.save_pretrained("./fine_tuning_model")
     print("Model fine-tuned and saved successfully!")
@@ -179,20 +176,12 @@ def home():
 def about():
     return render_template("about.html")
 
-@app.route("/statistics")
-
-def statistics():
-    return render_template("statistics.html")
-
 @app.route("/start-model", methods=["GET", "POST"])
 def start_model():
     if request.method == "POST":
         input_text = request.form["inputText"]
         analyzer = ThreatAnalyzer()
         result = analyzer.analyze_threat(input_text)
-        ascii_art = art.text2art(result["threat_level"], "block")
-
-       
         result_metrics = {
             "accuracy": result.get("accuracy"),
             "f1": result.get("f1"),
@@ -205,20 +194,60 @@ def start_model():
             result=result,
             input_text=input_text,
             detected_patterns=", ".join(result["detected_patterns"]) or "No specific patterns",
-            ascii_art=ascii_art,
             result_metrics=result_metrics
         )
     return render_template("start-model.html", result=None)
 
+def banner():
+    print(r'''
+               _____       ____   ______         ______
+              / ___/____ _/ __/__/_  __/__  _  _/_  __/
+              \__ \/ __ `/ /_/ _ \/ / / _ \| |/_// /   
+             ___/ / /_/ / __/  __/ / /  __/>  < / /    
+            /____/\__,_/_/  \___/_/  \___/_/|_|/_/     
+
+                                        Author: ThemeHackers
+          
+
+          This large language model is designed to analyze suspicious text for potential 
+          threats such as phishing,social engineering, and malware. 
+          The model is optimized for a wide range of threat data and produces a comprehensive threat score.    
+
+''')
 def run_cli(args):
     if args.input_text:
         analyzer = ThreatAnalyzer()
         result = analyzer.analyze_threat(args.input_text)
-        print(f"Threat Level: {result['threat_level']}")
-        print(f"Detected Patterns: {', '.join(result['detected_patterns'])}")
-        print(f"Recommendations:\n{chr(10).join(result['recommendations'])}")
+        
+        banner()
+        print(Fore.RED + f"\n--- Threat Analysis Result ---")
+        print(f"Threat Level: {result['threat_level']}\n")
+        print(f"Threat Score: {result['threat_score']}\n")
+
+        if result['detected_patterns']:
+            print(Fore.RED + f"Detected Patterns:")
+            for pattern in result['detected_patterns']:
+                print(f"- {pattern}")
+        else:
+            print("No specific patterns detected.\n")
+        
+      
+        if result['recommendations']:
+            print(Fore.GREEN + f"\nRecommendations:")
+            for rec in result['recommendations']:
+                print(f"- {rec}")
+        else:
+            print("No recommendations available.\n")
+        
+       
+        print(Fore.GREEN + f"\nModel Probabilities:")
+        for label, prob in zip(["Negative", "Positive"], result['model_probabilities']):
+            print(f"- {label}: {prob:.3f}")
+        
+        
     else:
         print("Error: Please provide text for analysis.")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Analyze potential threats in messages or fine-tune the model.")
@@ -235,4 +264,4 @@ if __name__ == "__main__":
     elif args.cli:
         run_cli(args)
     else:
-        app.run(host="0.0.0.0", debug=True)
+        app.run(host="0.0.0.0", port='5000' ,debug=True)
