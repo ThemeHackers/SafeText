@@ -6,6 +6,7 @@ import pandas as pd
 import torch
 import re
 import numpy as np
+import time
 from colorama import Style , Fore , init 
 from tqdm import tqdm 
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
@@ -218,8 +219,12 @@ def run_cli(args):
     if args.input_text:
         analyzer = ThreatAnalyzer()
         result = analyzer.analyze_threat(args.input_text)
-        
+        items = range(1, 101)  
         banner()
+        for item in tqdm(items, desc="Processing", ncols=100, unit="verify"):
+            time.sleep(0.05)
+            
+      
         print(Fore.RED + f"\n--- Threat Analysis Result ---")
         print(f"Threat Level: {result['threat_level']}\n")
         print(f"Threat Score: {result['threat_score']}\n")
@@ -265,3 +270,4 @@ if __name__ == "__main__":
         run_cli(args)
     else:
         app.run(host="0.0.0.0", port='5000' ,debug=True)
+        
