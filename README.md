@@ -29,6 +29,15 @@ This project provides a web application and CLI tool for analyzing threats in te
    ```bash
    python3 info.py
 ```
+## Run with CLI (Command Line Interface) 
+   ```bash
+   python3 safetext.py --cli --input_text "Text Here"
+```
+## Run with web applications
+   ```bash
+   python3 safetext.py --cli --input_text "Text Here"
+```
+
 ## File Structure
    ```bash
 SafeText/
